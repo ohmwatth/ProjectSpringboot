@@ -24,8 +24,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         return org.springframework.security.core.userdetails.User.builder()
             .username(user.getUsername())
-            .password(user.getPassword()) // bcrypt password
-            .roles(user.getRole()) // เช่น "USER", "ADMIN"
+            .password(user.getPassword())
+            .roles(user.getRole()) // เช่น "STUDENT" จะกลายเป็น "ROLE_STUDENT"
             .build();
     }
 }

@@ -50,9 +50,10 @@ public class RegisterController {
 
         User u = new User();
         u.setUsername(req.getUsername());
-        u.setPassword(passwordEncoder.encode(req.getPassword())); // ✅ encode
-        u.setFullName(req.getFullName());
+        u.setPassword(req.getPassword());
         u.setEmail(req.getEmail());
+        u.setFullName(req.getFullName());
+        u.setRole("STUDENT"); // กำหนด role
         userService.registerUser(u);
 
         redirectAttributes.addFlashAttribute("message", "✅ สมัครสมาชิกสำเร็จ");

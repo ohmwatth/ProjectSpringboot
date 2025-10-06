@@ -13,30 +13,34 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UserService {
 
     private final UserRepository userRepo;
+    private final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder; // ไม่ทำให้เกิดวงจร
-
-    public UserService(UserRepository userRepo) {
+    public UserService(UserRepository userRepo, PasswordEncoder passwordEncoder) {
         this.userRepo = userRepo;
+        this.passwordEncoder = passwordEncoder;
     }
 
+    // register user
     public User registerUser(User u) {
+        // กำหนด role ถ้าไม่มี
+        if (u.getRole() == null || u.getRole().isEmpty()) {
+            u.setRole("STUDENT");
+        }
+
         u.setPassword(passwordEncoder.encode(u.getPassword()));
         return userRepo.save(u);
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepo.findByUsername(username)
-                            .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-        return new org.springframework.security.core.userdetails.User(
-            user.getUsername(),
-            user.getPassword(),
-            List.of(new SimpleGrantedAuthority("ROLE_USER"))
-        );
+    // อัปเดต profile
+    public User updateUser(User u) {
+        return userRepo.save(u);
+    }
+
+    // ค้นหา user
+    public Optional<User> findByUsername(String username) {
+        return userRepo.findByUsername(username);
     }
 }

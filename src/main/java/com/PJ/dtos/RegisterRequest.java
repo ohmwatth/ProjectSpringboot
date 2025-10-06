@@ -5,7 +5,7 @@ public class RegisterRequest {
     private String email;
     private String password;
     private String fullName;
-    private String Tel;
+
 	public String getUsername() {
 		return username;
 	}
@@ -30,12 +30,7 @@ public class RegisterRequest {
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
-	public String getTel() {
-		return Tel;
-	}
-	public void setTel(String tel) {
-		Tel = tel;
-	}
+	
 
     
 }
