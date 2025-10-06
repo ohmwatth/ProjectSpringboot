@@ -4,8 +4,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.PJ.model.Assignment;
-import com.PJ.model.AssignmentStatus;
 import com.PJ.model.Subject;
 import com.PJ.model.Task;
 import com.PJ.model.User;
@@ -33,7 +31,6 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
-        // สร้างนักเรียนตัวอย่าง
         if (userRepo.findByUsername("student1").isEmpty()) {
             User student = new User();
             student.setUsername("student1");
@@ -42,7 +39,6 @@ public class DataInitializer implements CommandLineRunner {
             student.setFullName("นักเรียน 1");
             userRepo.save(student);
 
-            // เพิ่มงานตัวอย่างให้ student1
             Task t1 = new Task();
             t1.setTitle("อ่านบทที่ 1");
             t1.setStudent(student);
@@ -55,7 +51,6 @@ public class DataInitializer implements CommandLineRunner {
             taskRepo.save(t2);
         }
 
-        // สร้าง admin ตัวอย่าง
         if (userRepo.findByUsername("admin").isEmpty()) {
             User admin = new User();
             admin.setUsername("admin");
