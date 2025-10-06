@@ -1,83 +1,134 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สมัครสมาชิก</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: #AEC6CF; /* พาสเทลฟ้า */
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #0a2342, #1e3c72);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;
         }
 
-        form {
-            background: rgba(255,255,255,0.6);
-            padding: 30px 40px;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.1);
+        .register-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px 50px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            align-items: center;
+            width: 340px;
             transition: 0.3s;
         }
 
-        /* hover บน form ให้เงาเข้มขึ้น */
-        form:hover {
-            box-shadow: 0 12px 40px 0 rgba(0,0,0,0.25);
+        .register-container:hover {
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
         }
 
-        input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #a8d0ff;
+            font-size: 22px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
             padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            width: 250px;
+            border-radius: 6px;
+            border: none;
+            width: 100%;
+            outline: none;
+            background: rgba(255,255,255,0.9);
             transition: 0.3s;
+            color: #000;
+            margin-bottom: 10px;
         }
 
-        /* hover บน input */
-        input[type="text"]:hover, input[type="password"]:hover,
-        input[type="email"]:hover, input[type="tel"]:hover {
-            border: 2px solid #55AA55;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        input:focus {
+            border: 2px solid #3a7bd5;
+            box-shadow: 0 0 8px rgba(58,123,213,0.4);
         }
 
         button {
             padding: 10px;
-            border-radius: 5px;
+            border-radius: 6px;
             border: none;
-            background: #77DD77; /* พาสเทลเขียว */
+            background: #3a7bd5;
             color: white;
+            font-weight: 600;
             cursor: pointer;
             transition: 0.3s;
+            width: 100%;
+            margin-top: 5px;
         }
 
         button:hover {
-            background: #55AA55;
+            background: #285f9e;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
-        h2 { text-align: center; margin-bottom: 20px; }
+        a {
+            color: #a8d0ff;
+            text-decoration: none;
+        }
 
-        a { color: #333; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+        a:hover {
+            text-decoration: underline;
+        }
 
-        p.error { color: red; text-align: center; margin-top: 10px; }
-        p.login { text-align: center; margin-top: 10px; }
+        p.error {
+            color: #ffaaaa;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        p.login {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 400px) {
+            .register-container {
+                width: 90%;
+                padding: 30px 25px;
+            }
+        }
     </style>
 </head>
 <body>
-    <form th:action="@{/auth/register}" method="post">
-        <h2>สมัครสมาชิก</h2>
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="text" name="fullName" placeholder="ชื่อ-นามสกุล" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <button type="submit">สมัครสมาชิก</button>
-        <p th:if="${error}" th:text="${error}" class="error"></p>
-        <p class="login">มีบัญชีแล้ว? <a th:href="@{/auth/login}">เข้าสู่ระบบ</a></p>
-    </form>
+    <div class="register-container">
+        <img th:src="@{/images/logo.png}" alt="Logo" class="logo">
+        <form th:action="@{/auth/register}" method="post">
+            <h2>สมัครสมาชิก</h2>
+
+            <input type="text" name="username" placeholder="ชื่อผู้ใช้ (Username)" required>
+            <input type="password" name="password" placeholder="รหัสผ่าน (Password)" required>
+            <input type="text" name="fullName" placeholder="ชื่อ-นามสกุล" required>
+            <input type="email" name="email" placeholder="อีเมล (Email)" required>
+
+            <button type="submit">สมัครสมาชิก</button>
+            <p th:if="${error}" th:text="${error}" class="error"></p>
+
+            <p class="login">
+                มีบัญชีแล้ว?
+                <a th:href="@{/auth/login}">เข้าสู่ระบบ</a>
+            </p>
+        </form>
+    </div>
 </body>
 </html>

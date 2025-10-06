@@ -1,78 +1,132 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="th">
 <head>
-    <meta charset="UTF-8">
-    <title>Edit Task</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            background: #AEC6CF; /* พาสเทลฟ้า */
-            padding: 50px; 
-            text-align: center; 
-        }
-        form {
-            background: rgba(255,255,255,0.6);
-            padding: 30px;
-            border-radius: 15px;
-            display: inline-block;
-            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.1);
-        }
-        input[type=text], textarea { 
-            padding: 8px; 
-            margin: 5px 0; 
-            width: 300px; 
-            border-radius: 5px; 
-            border: 1px solid #ccc; 
-        }
-        textarea { 
-            height: 100px; 
-            resize: none; 
-        }
-        button { 
-            padding: 8px 20px; 
-            border-radius: 5px; 
-            border: none; 
-            background: #77DD77; /* พาสเทลเขียว */
-            color: white; 
-            cursor: pointer; 
-        }
-        button:hover { 
-            background: #55AA55; 
-        }
-        a { 
-            display: inline-block; 
-            margin-top: 20px; 
-            color: #333; 
-            text-decoration: none; 
-        }
-        a:hover { 
-            text-decoration: underline; 
-        }
-        label { 
-            font-weight: bold; 
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>แก้ไขงาน</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #0a2342, #1e3c72);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .edit-task-container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px 50px;
+      width: 400px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 1s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+    }
+
+    h1 {
+      color: #a8d0ff;
+      margin-bottom: 20px;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+    }
+
+    input[type="text"], textarea {
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.9);
+      outline: none;
+      width: 100%;
+      transition: 0.3s;
+      color: #000;
+    }
+
+    input[type="text"]:focus, textarea:focus {
+      border: 2px solid #3a7bd5;
+      box-shadow: 0 0 8px rgba(58, 123, 213, 0.4);
+    }
+
+    textarea {
+      resize: none;
+      min-height: 100px;
+    }
+
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background: #3a7bd5;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #285f9e;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    a.back-link {
+      display: inline-block;
+      margin-top: 15px;
+      color: #a8d0ff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    a.back-link:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-<h1>Edit Task</h1>
-
-<form th:action="@{/tasks/edit/{id}(id=${task.id})}" method="post">
-    <label>ชื่องาน</label><br>
-    <input type="text" name="title" th:value="${task.title}" required/><br>
-
-    <label>รายละเอียดงาน</label><br>
-    <textarea name="description" th:text="${task.description}"></textarea><br>
-
-    <label>ชื่อวิชา</label><br>
-    <input type="text" name="subjectName" th:value="${task.subject.name}" required/><br>
-
-    <label>ชื่อเต็มวิชา</label><br>
-    <input type="text" name="subjectTitle" th:value="${task.subject.title}"/><br>
-
-    <button type="submit">Save Changes</button>
-</form>
-
-<br>
-<a th:href="@{/tasks}">กลับไปหน้า Tasks</a>
+  <div class="edit-task-container">
+    <h1>แก้ไขงาน</h1>
+    <form th:action="@{/tasks/edit/{id}(id=${task.id})}" method="post">
+      <label>ชื่องาน
+        <input type="text" name="title" th:value="${task.title}" required/>
+      </label>
+      <label>รายละเอียดงาน
+        <textarea name="description" th:text="${task.description}"></textarea>
+      </label>
+      <label>ชื่อวิชา
+        <input type="text" name="subjectName" th:value="${task.subject.name}" required/>
+      </label>
+      <label>ชื่อเต็มวิชา
+        <input type="text" name="subjectTitle" th:value="${task.subject.title}"/>
+      </label>
+      <button type="submit">บันทึกการแก้ไข</button>
+    </form>
+    <a th:href="@{/tasks}" class="back-link">กลับไปหน้า Tasks</a>
+  </div>
 </body>
 </html>

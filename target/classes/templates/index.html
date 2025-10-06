@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="th" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>ยินดีต้อนรับสู่ระบบเก็บงานนักศึกษา</title>
@@ -9,22 +9,22 @@
 
         html, body {
             height: 100%;
-            font-family: Arial, sans-serif;
-            background: #AEC6CF; /* พาสเทลฟ้า */
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #0a2342, #1e3c72);
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            cursor: pointer; /* ให้คลิกได้ทุกที่ */
+            cursor: pointer;
         }
 
         h1 {
-            font-size: 3rem;
-            color: #333;
-            background: rgba(255,255,255,0.6);
-            padding: 20px 40px;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.1);
+            font-size: 2.5rem;
+            color: #a8d0ff;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px 50px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
             animation: bounce 2s infinite alternate, floatAround 4s ease-in-out infinite alternate;
         }
 
@@ -42,6 +42,11 @@
             50% { transform: translate(-10px, 0); }
             75% { transform: translate(5px, 0); }
             100% { transform: translate(0, 0); }
+        }
+
+        h1:hover {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
         }
     </style>
 </head>
