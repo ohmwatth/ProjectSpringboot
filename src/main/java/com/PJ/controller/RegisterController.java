@@ -53,7 +53,6 @@ public class RegisterController {
         u.setPassword(passwordEncoder.encode(req.getPassword())); // ✅ encode
         u.setFullName(req.getFullName());
         u.setEmail(req.getEmail());
-        u.setTel(req.getTel());
         userService.registerUser(u);
 
         redirectAttributes.addFlashAttribute("message", "✅ สมัครสมาชิกสำเร็จ");
