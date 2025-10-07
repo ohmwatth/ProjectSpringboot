@@ -74,7 +74,6 @@ public class TaskRestController {
         Task task = new Task();
         task.setTitle(req.getTitle());
         task.setDescription(req.getDescription());
-        task.setIconUrl(req.getIconUrl());
         task.setFinished(false);
         task.setStudent(student);
         task.setSubject(subject);
@@ -109,7 +108,6 @@ public class TaskRestController {
 
         task.setTitle(req.getTitle());
         task.setDescription(req.getDescription());
-        task.setIconUrl(req.getIconUrl());
         return taskRepo.save(task);
     }
 

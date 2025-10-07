@@ -20,7 +20,6 @@ public class TaskDTO {
 		this.subjectId = subjectId;
 		this.subjectName = subjectName;
 		this.subjectTitle = subjectTitle;
-
 	}
 	public String getTitle() {
 		return title;
@@ -53,6 +52,7 @@ public class TaskDTO {
 		this.subjectTitle = subjectTitle;
 	}
 
+	
 	
 }
     
