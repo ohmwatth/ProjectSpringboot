@@ -23,9 +23,9 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    // register user
+
     public User registerUser(User u) {
-        // กำหนด role ถ้าไม่มี
+   
         if (u.getRole() == null || u.getRole().isEmpty()) {
             u.setRole("STUDENT");
         }
@@ -34,12 +34,11 @@ public class UserService {
         return userRepo.save(u);
     }
 
-    // อัปเดต profile
+ 
     public User updateUser(User u) {
         return userRepo.save(u);
     }
 
-    // ค้นหา user
     public Optional<User> findByUsername(String username) {
         return userRepo.findByUsername(username);
     }

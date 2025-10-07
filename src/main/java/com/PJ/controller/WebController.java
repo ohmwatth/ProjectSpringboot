@@ -11,12 +11,12 @@ public class WebController {
 
 	@GetMapping("/")
     public String index() {
-        return "index"; // templates/index.html
+        return "index"; 
     }
 
     @GetMapping("/login")
     public String login() {
-        return "login"; // templates/login.html
+        return "login"; 
     }
 
     

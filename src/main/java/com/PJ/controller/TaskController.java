@@ -34,23 +34,23 @@ public class TaskController {
 
     @GetMapping("/tasks")
     public String showTasks(@AuthenticationPrincipal UserDetails userDetails, Model model) {
-        // ดึงผู้ใช้จาก username
+  
         User user = userRepo.findByUsername(userDetails.getUsername())
                             .orElseThrow(() -> new RuntimeException("User not found"));
 
-        // ส่ง username ไปที่ view
-        model.addAttribute("username", user.getFullName()); // หรือใช้ user.getUsername() ถ้าต้องการชื่อ login
 
-        // ดึงงานของผู้ใช้คนนี้
+        model.addAttribute("username", user.getFullName()); 
+
+
         List<Task> tasks = taskRepo.findByStudent(user);
 
-        // จัดกลุ่มตามตัวอักษรแรกของวิชา
+  
         Map<String, List<Task>> groupedTasks = tasks.stream()
                 .collect(Collectors.groupingBy(t -> t.getSubject().getName().substring(0, 1).toUpperCase()));
 
         model.addAttribute("groupedTasks", groupedTasks);
 
-        return "task"; // templates/task.html
+        return "task";
     }
 
     @PostMapping("/tasks/add")
@@ -70,14 +70,14 @@ public class TaskController {
         Subject subject;
 
         if (subjectId != null) {
-            // ใช้ Subject ที่มีอยู่แล้ว
+  
             subject = subjectRepo.findById(subjectId)
                                  .orElseThrow(() -> new RuntimeException("Subject not found"));
         } else if (subjectName != null && !subjectName.isEmpty()) {
-            // ตรวจสอบว่ามี Subject นี้แล้วหรือยัง
+      
         	List<Subject> subjects = subjectRepo.findByUserAndName(student, subjectName);
         	if (!subjects.isEmpty()) {
-        	    subject = subjects.get(0); // ใช้ตัวแรก
+        	    subject = subjects.get(0); 
         	} else {
         	    subject = new Subject();
         	    subject.setName(subjectName);
@@ -108,7 +108,7 @@ public class TaskController {
         Task task = taskRepo.findById(id)
             .orElseThrow(() -> new RuntimeException("Task not found"));
         model.addAttribute("task", task);
-        return "view-task"; // templates/view-task.html
+        return "view-task"; 
     }
     
     @GetMapping("/tasks/edit/{id}")
@@ -128,12 +128,12 @@ public class TaskController {
         Task task = taskRepo.findById(id).orElseThrow(() -> new RuntimeException("Task not found"));
         Subject subject = task.getSubject();
 
-        // อัปเดตชื่อวิชาและ title ของวิชา
+
         subject.setName(subjectName);
         subject.setTitle(subjectTitle != null ? subjectTitle : subjectName);
         subjectRepo.save(subject);
 
-        // อัปเดตงาน
+     
         task.setTitle(title);
         task.setDescription(description);
         task.setIconUrl(iconUrl);

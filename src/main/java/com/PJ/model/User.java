@@ -19,13 +19,12 @@ public class User {
     private String username;
 
     @Column(nullable = false)
-    private String password; // stored encoded
+    private String password; 
 
     private String email;
     private String fullName;
-    private String role = "STUDENT"; // default เป็นนักเรียน
+    private String role = "STUDENT"; 
 
-    // One-to-many: งาน (Task/Checklist) ของนักเรียน
     @OneToMany(mappedBy = "student")
     @JsonManagedReference
     private Set<Task> tasks;

@@ -8,9 +8,7 @@ import java.util.List;
 
 public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findByStudentId(Long studentId);
-    // ✅ เพิ่มเมธอดใหม่
-    List<Task> findByStudent(User student);
 
-    // ✅ เพิ่มเมธอดใหม่ สำหรับกรณีกรองตาม subject
+    List<Task> findByStudent(User student);
     List<Task> findByStudentAndSubjectId(User student, Long subjectId);
 }

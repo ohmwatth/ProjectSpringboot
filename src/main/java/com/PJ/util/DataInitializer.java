@@ -4,15 +4,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.PJ.model.Subject;
+
 import com.PJ.model.Task;
 import com.PJ.model.User;
 
-import com.PJ.repository.SubjectRepository;
+
 import com.PJ.repository.TaskRepository;
 import com.PJ.repository.UserRepository;
 
-import java.time.LocalDateTime;
 
 @Configuration
 public class DataInitializer implements CommandLineRunner {
