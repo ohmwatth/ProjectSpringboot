@@ -1,15 +1,13 @@
 package com.PJ.service;
 
-import org.springframework.security.core.userdetails.*;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import org.springframework.stereotype.Service;
 import com.PJ.repository.UserRepository;
 import com.PJ.model.User;
 
-import java.util.Collections;
-import java.util.List;
+
 import java.util.Optional;
 
 @Service

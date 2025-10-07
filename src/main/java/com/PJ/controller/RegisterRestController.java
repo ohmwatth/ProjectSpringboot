@@ -6,7 +6,7 @@ import com.PJ.model.User;
 import com.PJ.repository.UserRepository;
 import com.PJ.service.UserService;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
