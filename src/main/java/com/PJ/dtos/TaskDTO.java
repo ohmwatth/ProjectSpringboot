@@ -1,26 +1,27 @@
 package com.PJ.dtos;
 
 public class TaskDTO {
-    private Long id;
-    private String title;
-    private boolean finished;
+	private String title;
+    private String description;
+    private Long subjectId;
+    private String subjectName;
+    private String subjectTitle;
+    private String iconUrl;
+
     
-    
-	public TaskDTO(Long id, String title, boolean finished) {
+    public TaskDTO() {
 		super();
-		this.id = id;
+		// TODO Auto-generated constructor stub
+	}
+	public TaskDTO(String title, String description, Long subjectId, String subjectName, String subjectTitle,
+			String iconUrl) {
+		super();
 		this.title = title;
-		this.finished = finished;
-	}
-	public TaskDTO() {
-		super();
-		
-	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
+		this.description = description;
+		this.subjectId = subjectId;
+		this.subjectName = subjectName;
+		this.subjectTitle = subjectTitle;
+		this.iconUrl = iconUrl;
 	}
 	public String getTitle() {
 		return title;
@@ -28,12 +29,37 @@ public class TaskDTO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public boolean isFinished() {
-		return finished;
+	public String getDescription() {
+		return description;
 	}
-	public void setFinished(boolean finished) {
-		this.finished = finished;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-    
-    
+	public Long getSubjectId() {
+		return subjectId;
+	}
+	public void setSubjectId(Long subjectId) {
+		this.subjectId = subjectId;
+	}
+	public String getSubjectName() {
+		return subjectName;
+	}
+	public void setSubjectName(String subjectName) {
+		this.subjectName = subjectName;
+	}
+	public String getSubjectTitle() {
+		return subjectTitle;
+	}
+	public void setSubjectTitle(String subjectTitle) {
+		this.subjectTitle = subjectTitle;
+	}
+	public String getIconUrl() {
+		return iconUrl;
+	}
+	public void setIconUrl(String iconUrl) {
+		this.iconUrl = iconUrl;
+	}
+	
+	
 }
+    

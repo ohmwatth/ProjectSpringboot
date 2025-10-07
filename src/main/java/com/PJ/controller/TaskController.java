@@ -1,6 +1,6 @@
 package com.PJ.controller;
 
-import com.PJ.dtos.TaskDTO;
+
 import com.PJ.model.Subject;
 import com.PJ.model.Task;
 import com.PJ.model.User;
@@ -8,7 +8,7 @@ import com.PJ.repository.SubjectRepository;
 import com.PJ.repository.TaskRepository;
 import com.PJ.repository.UserRepository;
 
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
