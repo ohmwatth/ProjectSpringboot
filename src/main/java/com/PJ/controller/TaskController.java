@@ -91,7 +91,6 @@ public class TaskController {
         }
 
         task.setSubject(subject);
-        task.setIconUrl(iconUrl);
         taskRepo.save(task);
 
         return "redirect:/tasks";
@@ -136,7 +135,6 @@ public class TaskController {
      
         task.setTitle(title);
         task.setDescription(description);
-        task.setIconUrl(iconUrl);
         taskRepo.save(task);
 
         return "redirect:/tasks";
