@@ -22,10 +22,10 @@ public class Task {
     private boolean finished;
 
     @Column(length = 1000)
-    private String description; // รายละเอียดงาน
+    private String description; 
 
-    private String iconUrl; // URL ของโลโก้หรือรูปภาพ
-    // งานนี้เป็นของนักเรียนคนไหน
+    
+    
     @ManyToOne
     @JoinColumn(name = "subject_id")
     private Subject subject;
@@ -45,12 +45,8 @@ public class Task {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getIconUrl() {
-		return iconUrl;
-	}
-	public void setIconUrl(String iconUrl) {
-		this.iconUrl = iconUrl;
-	}
+	
+
 	public void setId(Long id) { this.id = id; }
 
     public String getTitle() { return title; }
