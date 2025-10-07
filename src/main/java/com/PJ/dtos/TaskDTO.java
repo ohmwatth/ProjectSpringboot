@@ -6,22 +6,21 @@ public class TaskDTO {
     private Long subjectId;
     private String subjectName;
     private String subjectTitle;
-    private String iconUrl;
+  
 
     
     public TaskDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public TaskDTO(String title, String description, Long subjectId, String subjectName, String subjectTitle,
-			String iconUrl) {
+	public TaskDTO(String title, String description, Long subjectId, String subjectName, String subjectTitle) {
 		super();
 		this.title = title;
 		this.description = description;
 		this.subjectId = subjectId;
 		this.subjectName = subjectName;
 		this.subjectTitle = subjectTitle;
-		this.iconUrl = iconUrl;
+
 	}
 	public String getTitle() {
 		return title;
@@ -53,13 +52,7 @@ public class TaskDTO {
 	public void setSubjectTitle(String subjectTitle) {
 		this.subjectTitle = subjectTitle;
 	}
-	public String getIconUrl() {
-		return iconUrl;
-	}
-	public void setIconUrl(String iconUrl) {
-		this.iconUrl = iconUrl;
-	}
-	
+
 	
 }
     
